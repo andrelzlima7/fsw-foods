@@ -47,4 +47,13 @@
     --input: 0 0% 14.9%;
     --ring: 0 72.2% 50.6%;
   }
+  @layer base {
+    * {
+      @apply box-border;
+    }
+
+    body {
+      @apply text-foreground antialiased;
+    }
+  }
 }
