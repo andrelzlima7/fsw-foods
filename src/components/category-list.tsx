@@ -11,7 +11,7 @@ const CategoryList = async () => {
   const categories = await response.json();
 
   return (
-    <ul className="mx-5 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+    <ul className="ml-5 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
       {categories.map((category: Categories) => (
         <li key={category.id} className="flex gap-3 px-4 py-3">
           <Image
