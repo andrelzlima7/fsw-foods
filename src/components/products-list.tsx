@@ -24,7 +24,7 @@ const ProductsList = async () => {
     <div>
       <RecommendedItems title="Pedidos Recomendados" url="" />
       <div>
-        <ul className="ml-5 mt-4 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+        <ul className="ml-5 mt-4 flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
           {orderProducts.slice(0, 7).map((product, id) => {
             return (
               <li key={id}>
