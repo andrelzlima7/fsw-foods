@@ -12,6 +12,7 @@ export default function Home() {
       <CategoryList />
       <PromoBanner src="/Banner-Pizza.png" alt="Banner Promocional desconto 30%" />
       <ProductsList />
+      <PromoBanner src="/Banner-hamburguer.png" alt="Banner Promocional lanches a partir de 17,90" />
     </main>
   );
 }
