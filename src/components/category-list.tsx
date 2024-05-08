@@ -1,3 +1,4 @@
+import { ROUTE_CATEGORIES } from "@/api/routes";
 import Image from "next/image";
 
 interface Categories {
@@ -7,7 +8,7 @@ interface Categories {
 }
 
 const CategoryList = async () => {
-  const response = await fetch("http://localhost:3000/categories");
+  const response = await fetch(ROUTE_CATEGORIES);
   const categories = await response.json();
 
   return (
@@ -21,7 +22,7 @@ const CategoryList = async () => {
             width={0}
             height={0}
           />
-          <span className="font-semibold">{category.name}</span>
+          <span className="font-semibold text-sm">{category.name}</span>
         </li>
       ))}
     </ul>
