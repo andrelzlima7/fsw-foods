@@ -2,6 +2,7 @@ import { ROUTE_PRODUCTS } from "@/api/routes";
 import { ArrowDown, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import RecommendedItems from "./recommended-items";
 
 interface Products {
   name: string;
@@ -21,16 +22,7 @@ const ProductsList = async () => {
 
   return (
     <div>
-      <div className="flex items-center justify-between px-5">
-        <h3 className="text-base font-semibold">Pedidos Recomendados</h3>
-        <Link
-          href=""
-          className="flex border-none bg-transparent text-xs text-primary"
-        >
-          Ver Todos
-          <ChevronRight size={16} />
-        </Link>
-      </div>
+      <RecommendedItems title="Pedidos Recomendados" url="" />
       <div>
         <ul className="ml-5 mt-4 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
           {orderProducts.slice(0, 7).map((product, id) => {
@@ -67,7 +59,7 @@ const ProductsList = async () => {
                         currency: "BRL",
                       })}
                     </span>
-                    <span className="text-xs text-muted-foreground line-through m-2">
+                    <span className="m-2 text-xs text-muted-foreground line-through">
                       {product.price.toLocaleString("pt-BR", {
                         style: "currency",
                         currency: "BRL",
