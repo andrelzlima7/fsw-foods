@@ -4,10 +4,13 @@ import Image from "next/image";
 import { Bike, TimerReset } from "lucide-react";
 
 interface Restaurants {
+  id: string
   name: string;
   imageUrl: string;
   deliveryFee: number;
   deliveryTimeMinutes: number;
+  stars: number;
+  like: boolean;
 }
 
 const RestaurantList = async () => {
@@ -20,7 +23,7 @@ const RestaurantList = async () => {
         <ul className="ml-5 mt-4 flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
           {restaurants.slice(0, 5).map((restaurant, id) => {
             return (
-              <li key={id}>
+              <li key={restaurant.id}>
                 <div className="relative h-[136px] w-[266px]">
                   <Image
                     src={restaurant.imageUrl}
@@ -32,10 +35,10 @@ const RestaurantList = async () => {
                     quality={100}
                   />
                   <div className="absolute left-2 top-2  rounded-xl bg-primary text-xs font-semibold text-secondary">
-                    <span className="flex items-center p-1"></span>
+                    <span className="flex items-center p-1">{}</span>
                   </div>
                   <div className="absolute right-2 top-2  rounded-xl bg-primary text-xs font-semibold text-secondary">
-                    <span className="flex items-center p-1"></span>
+                    <span className="flex items-center p-1">{restaurant.like}</span>
                   </div>
                 </div>
                 <div className="mt-3">
