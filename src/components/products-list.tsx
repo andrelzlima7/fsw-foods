@@ -3,6 +3,7 @@ import { ArrowDown, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import RecommendedItems from "./recommended-items";
+import ProductItem from "./product-item";
 
 interface Products {
   name: string;
@@ -10,6 +11,7 @@ interface Products {
   discountPercentage: number;
   imageUrl: string;
   restaurant: string;
+  id: string;
 }
 
 const ProductsList = async () => {
@@ -25,48 +27,17 @@ const ProductsList = async () => {
       <RecommendedItems title="Pedidos Recomendados" url="" />
       <div>
         <ul className="ml-5 mt-4 flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
-          {orderProducts.slice(0, 7).map((product, id) => {
+          {orderProducts.slice(0, 7).map((product) => {
             return (
-              <li key={id}>
-                <div className="relative h-[150px] w-[150px]">
-                  <Image
-                    src={product.imageUrl}
-                    alt={product.name}
-                    width={0}
-                    height={0}
-                    className="h-full w-full rounded-lg object-fill drop-shadow-md"
-                    sizes="100%"
-                    quality={100}
+              <li key={product.id}>
+                <Link href={`product/${product.id}`}>
+                  <ProductItem
+                    discountPercentage={product.discountPercentage}
+                    imageUrl={product.imageUrl}
+                    name={product.name}
+                    price={product.price}
                   />
-                  <div className="absolute left-2 top-2  rounded-xl bg-primary text-xs font-semibold text-secondary">
-                    <span className="flex items-center p-1">
-                      <ArrowDown size={12} />
-                      {product.discountPercentage}%
-                    </span>
-                  </div>
-                </div>
-                <div className="mt-2">
-                  <h4 className="text-sm text-accent-foreground">
-                    {product.name}
-                  </h4>
-                  <div>
-                    <span className="font-semibold">
-                      {(
-                        product.price -
-                        product.price * (product.discountPercentage / 100)
-                      ).toLocaleString("pt-BR", {
-                        style: "currency",
-                        currency: "BRL",
-                      })}
-                    </span>
-                    <span className="m-2 text-xs text-muted-foreground line-through">
-                      {product.price.toLocaleString("pt-BR", {
-                        style: "currency",
-                        currency: "BRL",
-                      })}
-                    </span>
-                  </div>
-                </div>
+                </Link>
               </li>
             );
           })}
